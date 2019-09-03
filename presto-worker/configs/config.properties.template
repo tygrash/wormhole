@@ -1,0 +1,6 @@
+coordinator=false
+http-server.http.port=8080
+query.max-memory=16GB
+query.max-memory-per-node=6GB
+query.max-total-memory-per-node=7GB
+discovery.uri=http://{presto_master_IP}:8080

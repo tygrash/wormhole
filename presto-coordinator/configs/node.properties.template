@@ -1,0 +1,3 @@
+node.environment=production
+node.id=test-node-01
+node.data-dir=/home/presto/data

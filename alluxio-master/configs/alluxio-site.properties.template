@@ -1,0 +1,10 @@
+alluxio.master.mount.table.root.ufs=gs://{bucket_name}/{path_in_bucket}
+alluxio.master.mount.table.root.option.fs.gcs.accessKeyId={gcs_accessKeyId}
+alluxio.master.mount.table.root.option.fs.gcs.secretAccessKey={gcs_secretAccessKey}
+alluxio.master.journal.type=UFS
+
+alluxio.worker.memory.size=3GB
+
+alluxio.zookeeper.enabled=true
+alluxio.zookeeper.address={zk1_IP}:2181,{zk2_IP}:2181,{zk3_IP}:2181
+alluxio.zookeeper.session.timeout=120s

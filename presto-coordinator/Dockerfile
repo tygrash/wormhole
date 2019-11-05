@@ -19,5 +19,7 @@ RUN mkdir catalog
 ADD configs/hive.properties.template etc/catalog/hive.properties
 
 ADD ../utils/jars/alluxio-2.0.0-client.jar plugin/hive-hadoop2
+ADD ../utils/jars/json-serde-1.3.8-jar-with-dependencies.jar plugin/hive-hadoop2
+ADD ../utils/jars/json-udf-1.3.8-jar-with-dependencies.jar plugin/hive-hadoop2
 
 CMD ["./bin/launcher", "run"]

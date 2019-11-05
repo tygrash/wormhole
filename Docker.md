@@ -67,7 +67,7 @@
 * `sudo service docker restart`
 
 #### Create docker overlay network in one of the docker host
-* `docker network create -d overlay alluxio_net`
+* `docker network create -d overlay wormhole_net`
 
 This will connect all docker hosts via a private LAN kind of network and since every docker is connected to consul, one container can recognize another just by containerID
 

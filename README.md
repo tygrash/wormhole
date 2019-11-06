@@ -20,6 +20,8 @@ If you are using some other user, make sure its private key is in same location 
 
 #### Setup [docker](Docker.md) on each VM
 
+#### Setup [zookeeper](Zookeeper.md)
+
 #### Setup [alluxio-master](alluxio-master/README.md)
 
 #### Setup [alluxio-worker](alluxio-worker/README.md)

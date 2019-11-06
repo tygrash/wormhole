@@ -1,17 +1,17 @@
 
 #### Build hive image and deploy container 
 ```
-1. git clone https://{user}@bitbucket.org/libertywireless/alluxio-presto.git
-2. cd alluxio-presto/hive
-3. docker build -t hive-image .
-4. docker logs mysql1 2>&1 | grep GENERATED
-5. docker exec -it mysql1 mysql -uroot -p'{password_obtained_from_above_command_4.}'
-   5.1. ALTER USER 'root'@'localhost' IDENTIFIED BY '{password_for_root}';
-   5.2. CREATE database metastore;
-   5.3. CREATE USER 'hiveuser'@'%' IDENTIFIED BY 'hivepassword';
-   5.4. GRANT ALL PRIVILEGES ON metastore . * TO 'hiveuser'@'%'; 
-   5.5. SOURCE /opt/apache-hive-2.1.0-bin/scripts/metastore/upgrade/mysql/hive-schema-0.14.0.mysql.sql;
+1. https://github.com/{github_user}/wormhole.git
+2. cd wormhole
+3. docker build -t hive-image -f hive/Dockerfile .
 4. docker run -d --shm-size 1G --net=wormhole_net -p 9083:9083 --name=hive-00 hive-image
+5. docker logs hive-00 2>&1 | grep GENERATED      //this gets random password set for root, which is used in below step 6.
+6. docker exec -it mysql1 mysql -uroot -p'{password_obtained_from_above_command_4.}'
+   6.1. ALTER USER 'root'@'localhost' IDENTIFIED BY '{new_password_for_root}';
+   6.2. CREATE database metastore;
+   6.3. CREATE USER 'hiveuser'@'%' IDENTIFIED BY 'hivepassword';
+   6.4. GRANT ALL PRIVILEGES ON metastore . * TO 'hiveuser'@'%'; 
+   6.5. SOURCE /opt/apache-hive-2.1.0-bin/scripts/metastore/upgrade/mysql/hive-schema-0.14.0.mysql.sql;
 ```
 
 #### Start hive-shell
@@ -27,7 +27,7 @@
 * Parquet File:
 `create external table users_hive(id int, first_name string, last_name string, email string, gender string, ip_address string, cc string, country string, salary DOUBLE, title string, comments string) STORED AS PARQUET LOCATION 'alluxio://zk@{zk1}:2181,{zk2}:2181,{zk3}:2181/directory_path_to_file';`
 
-* JSON File:
+* JSON File (references -> https://github.com/rcongiu/Hive-JSON-Serde):
 ```
  set hive.support.sql11.reserved.keywords=false;
 

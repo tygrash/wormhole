@@ -12,7 +12,7 @@ This project contains Docker files for Alluxio and Presto setups, using Hive met
 2. apt-get install python
 ```
 
-#### Add datamaster/{user} private file in .ssh/id_rsa in all VMs
+#### Add datamaster/{user} private file in .ssh/id_rsa in all VMs(create a common user in all VMs)
 ```
 Copy content of utils/id_rsa to .ssh/id_rsa for datamaster user in all machines. 
 If you are using some other user, make sure its private key is in same location in all machines.

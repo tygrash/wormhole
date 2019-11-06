@@ -20,7 +20,7 @@ RUN chown -R datamaster:datamaster /opt/
 USER datamaster
 
 WORKDIR /opt/alluxio
-ADD configs/alluxio-site.properties.template /opt/alluxio/conf/alluxio-site.properties
+ADD alluxio-worker/configs/alluxio-site.properties.template /opt/alluxio/conf/alluxio-site.properties
 
 CMD ["./bin/alluxio", "format"]
 CMD ["./bin/alluxio-start.sh", "worker"]
